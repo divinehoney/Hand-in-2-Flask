@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Starting page{% endblock %}
+
+{% block body %}
+    <h1>Me in a nutshell aka CV</h1>
+
+    <h2>My education:</h2>
+    <ul>
+        {% for slug, degree in degrees.items() %}
+          <li> {{ degree['name'] }} </li>
+        {% endfor %}
+      </ul>
+    <h2>My certificates:</h2>
+    <ul>
+        {% for slug, certificate in certificates.items() %}
+        <li> {{ certificate['name'] }} </li>
+        <p> {{ certificate['comment'] }} </p>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
