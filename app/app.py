@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, send_file
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('app.config')
 
 articles_data = {
     'moscow': {'name': 'Racism in Russia', 'reading time': '7 mins'},
@@ -43,6 +43,3 @@ def each_article(slug):
 @app.route('/legal')
 def legal():
     return send_file('static/downloads/legal.txt', as_attachment=True)
-
-if __name__ == '__main__':
-    app.run()
