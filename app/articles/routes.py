@@ -13,7 +13,7 @@ articles_data = {
 
 @blueprint.route('/articles/')
 def list_of_articles():
-    return render_template('articles.html', articles=articles_data)
+    return render_template('articles/index.html', articles=articles_data)
 
 @blueprint.route('/articles/<slug>')
 def each_article(slug):
