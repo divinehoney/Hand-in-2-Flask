@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, send_file
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -39,6 +39,10 @@ def list_of_articles():
 @app.route('/articles/<slug>')
 def each_article(slug):
   return articles_data[slug]
+
+@app.route('/legal')
+def legal():
+    return send_file('static/downloads/legal.txt', as_attachment=True)
 
 if __name__ == '__main__':
     app.run()
