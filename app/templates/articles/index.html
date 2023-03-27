@@ -9,11 +9,11 @@
 <body>
   <h1>Blog Articles</h1>
   <ul>
-    {% for slug, article in articles.items() %}
+    {% for slug, article in articles %}
       <li>
-        <a href="/articles/{{ slug }}">{{ article['name'] }}</a>
+        <a href="/articles/{{ slug }}">{{ article.name }}</a>
         </li>
-        <p> Reading time: {{ article['reading time'] }} </p>
+        <p> Reading time: {{ article.reading_time }} </p>
     {% endfor %}
   </ul>
 </body>
