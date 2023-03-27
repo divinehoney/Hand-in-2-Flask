@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, send_file
-from . import articles, simple_pages
+from . import articles, simple_pages, authors
 from app.extensions.database import db, migrate
 
 def create_app():
