@@ -9,9 +9,9 @@
 <body>
   <h1>Blog Articles</h1>
   <ul>
-    {% for slug, article in articles %}
+    {% for article in html_articles %}
       <li>
-        <a href="/articles/{{ slug }}">{{ article.name }}</a>
+        <a href="/articles/{{ article.slug }}">{{ article.title }}</a>
         </li>
         <p> Reading time: {{ article.reading_time }} </p>
     {% endfor %}

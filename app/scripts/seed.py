@@ -4,7 +4,9 @@ from app.extensions.database import db
 
 if __name__ == '__main__':
     app = create_app()
+    #create an app instance
     app.app_context().push()
+    #initialize an application context; simulates running the application just for the duration the Python script is being executed
 
 articles_data = {
     'moscow': {'name': 'Racism in Russia', 'reading_time': '7 mins'},
@@ -16,6 +18,7 @@ articles_data = {
 }
 
 for slug, article in articles_data.items():
-    new_article = Article(slug=slug, title=article['name'], reading_time = article['reading time'])
+    new_article = Article(slug=slug, title=article['name'], reading_time = article['reading_time'])
+    db.session.add(new_article)
 
 db.session.commit()

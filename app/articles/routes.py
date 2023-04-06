@@ -14,8 +14,8 @@ articles_data = {
 
 @blueprint.route('/articles/')
 def list_of_articles():
-    all_articles = Article.query.all()
-    return render_template('articles/index.html', articles=all_articles)
+    database_articles = Article.query.all()
+    return render_template('articles/index.html', html_articles=database_articles)
 
 @blueprint.route('/articles/<slug>')
 def each_article(slug):
