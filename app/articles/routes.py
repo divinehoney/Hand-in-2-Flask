@@ -18,5 +18,6 @@ def list_of_articles():
     return render_template('articles/index.html', html_articles=database_articles)
 
 @blueprint.route('/articles/<slug>')
-def each_article(slug):
-  return articles_data[slug]
+def single_article(slug):
+  single_db_article = Article.query.filter_by(slug=slug).first_or_404()
+  return render_template('articles/show.html', single_html_article = single_db_article)

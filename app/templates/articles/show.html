@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Article page{% endblock %}
+
+{% block body %}
+  <h1>{{single_html_article.title}}</h1>
+
+  <p>Reading time: {{single_html_article.reading_time}}</p>
+
+  <footer>
+    <a href="/articles">Back to all articles</a>
+  </footer>
+{% endblock %}
