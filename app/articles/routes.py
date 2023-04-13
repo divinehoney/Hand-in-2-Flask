@@ -23,6 +23,10 @@ def single_article(slug):
     single_db_article = Article.query.filter_by(slug=slug).first_or_404()
     return render_template('articles/show.html', single_html_article = single_db_article)
 
-@blueprint.route('/articles/postanarticle')
-def post_an_article():
+@blueprint.get('/articles/postanarticle')
+def get_publish_an_article():
+    return render_template('articles/new.html')
+
+@blueprint.post('/articles/postanarticle')
+def post_publish_an_article():
     return render_template('articles/new.html')
