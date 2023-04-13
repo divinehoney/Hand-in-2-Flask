@@ -16,5 +16,20 @@
         <p> Reading time: {{ article.reading_time }} </p>
     {% endfor %}
   </ul>
+  <nav>
+    {% if html_articles.prev_num %}
+    <a href="{{ url_for('articles.list_of_articles', page = html_articles.prev_num) }}">Previous Page</a>
+    {% else %}
+    <span>Previous Page</span>
+    {% endif %}
+
+    <span> - </span>
+
+    {% if html_articles.next_num %}
+    <a href="{{ url_for('articles.list_of_articles', page = html_articles.next_num) }}">Next Page</a>
+    {% else %}
+    <span>Next Page</span>
+    {% endif %}
+  </nav>
 </body>
 </html>
