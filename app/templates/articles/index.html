@@ -9,7 +9,7 @@
 <body>
   <h1>Blog Articles</h1>
   <ul>
-    {% for article in html_articles %}
+    {% for article in html_articles.items %}
       <li>
         <a href="/articles/{{ article.slug }}">{{ article.title }}</a>
         </li>
