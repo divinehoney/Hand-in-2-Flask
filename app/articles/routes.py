@@ -29,4 +29,7 @@ def get_publish_an_article():
 
 @blueprint.post('/articles/postanarticle')
 def post_publish_an_article():
+    #create an article
+    article_to_add = Article()
+    article_to_add.save()
     return render_template('articles/new.html')
