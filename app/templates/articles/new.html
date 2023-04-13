@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Article Blog {% endblock %}
+
+{% block body %}
+<h1> Publish an Article</h1>
+
+<form>
+    <h2>Enter Article Details</h2>
+    <fieldset>
+        <div>
+            <label for="title">Article title:</label>
+            <input type="text" id="title" name="title" placeholder="Where people drink beer for breakfast">
+        </div>
+        <div>
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" name="tags" placeholder="food, drinking">
+        </div>
+        <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="8" cols="30">Many places around the world have unique morning traditions. In Lyon, France, people tuck into wine and offal at 09:00. In Van, Turkey, it's typical to sit down to a nine-plate breakfast spread.
+            </textarea>
+        </div>
+        <input type="submit" value="Submit Order">
+    </fieldset>
+  </form>
+
+  {% endblock %}
