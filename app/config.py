@@ -1,7 +1,7 @@
 from os import environ
-from dotenv import load_dotenv
+import os
 
-load_dotenv()
+os.getenv()
 SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
 
 ARTICLES_PER_PAGE = 2
