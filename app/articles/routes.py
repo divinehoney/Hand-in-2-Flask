@@ -44,4 +44,6 @@ def post_publish_an_article():
     except Exception as error_message:
         error = error_message or 'An error occured while processing your article. Please make sure to enter valid data.'
 
+        current_app.logger.info(f'Error creating an article: {error}')
+
         return render_template('articles/new.html', error = error)
