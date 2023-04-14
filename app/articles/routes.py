@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, current_app
 from .models import Article
+from .services.create_article import create_article
 
 blueprint = Blueprint('articles', __name__)
 
@@ -29,11 +30,7 @@ def get_publish_an_article():
 
 @blueprint.post('/publisharticle')
 def post_publish_an_article():
-    #create an article
-    article_to_add = Article(
-        title = request.form.get('title'),
-        text = request.form.get('content'),
-        reading_time = request.form.get('reading_time')
-    )
-    article_to_add.save()
+
+    create_article(request.form)
+    
     return render_template('articles/new.html')
