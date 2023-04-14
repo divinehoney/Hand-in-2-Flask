@@ -30,7 +30,13 @@ def get_publish_an_article():
 
 @blueprint.post('/publisharticle')
 def post_publish_an_article():
-
-    create_article(request.form)
+    if not all([
+        request.form.get('title'),
+        request.form.get('reading_time'),
+        request.form.get('content')
+    ]):
+        return render_template('articles/new.html', error='Please fill out all article fields.')
     
+    create_article(request.form)
+
     return render_template('articles/new.html')
