@@ -30,13 +30,18 @@ def get_publish_an_article():
 
 @blueprint.post('/publisharticle')
 def post_publish_an_article():
-    if not all([
-        request.form.get('title'),
-        request.form.get('reading_time'),
-        request.form.get('content')
-    ]):
-        return render_template('articles/new.html', error='Please fill out all article fields.')
+    try:
+        if not all([
+            request.form.get('title'),
+            request.form.get('reading_time'),
+            request.form.get('content')
+        ]):
+            raise Exception('Please fill out all article fields.')
     
-    create_article(request.form)
+        create_article(request.form)
+        return render_template('articles/new.html')
+    
+    except Exception as error_message:
+        error = error_message or 'An error occured while processing your article. Please make sure to enter valid data.'
 
-    return render_template('articles/new.html')
+        return render_template('articles/new.html', error = error)
