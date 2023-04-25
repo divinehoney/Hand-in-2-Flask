@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, redirect, url_for
 from .models import Article
 from .services.create_article import create_article
+from .services.delete_article import delete_article
 
 blueprint = Blueprint('articles', __name__)
 
@@ -39,7 +40,12 @@ def post_publish_an_article():
 
         return render_template('articles/new.html', error = error)
     
-@blueprint.get('/deletearticle')
-def get_delete_article():
+@blueprint.route('/deletearticle', methods=["POST", "GET"])
+def delete_article_by_user():
     all_articles = Article.query.all()
+    if request.method == "POST":
+        delete_article(request.form)
+        return redirect(url_for('articles.delete_article_by_user'))
+
+
     return render_template('articles/delete.html', html_articles = all_articles)

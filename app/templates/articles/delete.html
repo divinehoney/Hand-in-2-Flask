@@ -11,7 +11,7 @@
         <div>
             <label for="articles">Articles:</label>
             <select id="articles" name="articles">
-                {% for article in html_articles.items %}
+                {% for article in html_articles %}
                 <option value="{{ article.title }}">{{ article.title }}</option>
                 {% endfor %}
             </select>
@@ -19,6 +19,7 @@
         {% if error %}
         <p style="color: tomato;">{{ error }}</p>
         {% endif %}
+        <input type="submit" value="Delete Article">
     </fieldset>
   </form>
 
