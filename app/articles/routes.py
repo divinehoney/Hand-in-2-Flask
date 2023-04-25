@@ -47,3 +47,8 @@ def post_publish_an_article():
         current_app.logger.info(f'Error creating an article: {error}')
 
         return render_template('articles/new.html', error = error)
+    
+@blueprint.get('/deletearticle')
+def get_delete_article():
+    all_articles = Article.query.all()
+    return render_template('articles/delete.html', html_articles = all_articles)
