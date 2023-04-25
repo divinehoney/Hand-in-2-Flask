@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Article Authors{% endblock %}
+
+{% block main %}
+  <h1>Article Authors</h1>
+  <ul>
+    {% for author in html_author.items %}
+      <li>Author name: {{ author.name }}</li>
+    {% endfor %}
+  </ul>
+  <nav>
+    {% if html_authors.prev_num %}
+    <a href="{{ url_for('authors.list_of_authors', page = html_authors.prev_num) }}">Previous Page</a>
+    {% else %}
+    <span>Previous Page</span>
+    {% endif %}
+
+    <span> - </span>
+
+    {% if html_articles.next_num %}
+    <a href="{{ url_for('authors.list_of_authors', page = html_authors.next_num) }}">Next Page</a>
+    {% else %}
+    <span>Next Page</span>
+    {% endif %}
+    </nav>
+
+{% endblock %}

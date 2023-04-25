@@ -4,15 +4,6 @@ from .services.create_article import create_article
 
 blueprint = Blueprint('articles', __name__)
 
-articles_data = {
-    'moscow': {'name': 'Racism in Russia', 'reading time': '7 mins'},
-    'german': {'name': 'How to Learn German', 'reading time': '4 mins'},
-    'mtg': {'name': 'Magic the Gathering', 'reading time': '15 mins'},
-    'berlin': {'name': 'Tipps on Finding a Flat in Berlin', 'reading time': '10 mins'},
-    'empathy': {'name': 'Key to a Happy Relationship', 'reading time': '8 mins'},
-    'habit': {'name': 'Review of Some Habit Tracking Apps', 'reading time': '7 mins'},
-}
-
 @blueprint.route('/articles/')
 def list_of_articles():
     page_number = request.args.get('page', 1, type=int)
