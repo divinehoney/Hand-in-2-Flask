@@ -1,5 +1,6 @@
 from app.app import create_app
 from app.articles.models import Article
+from app.authors.models import Author
 from app.extensions.database import db
 
 if __name__ == '__main__':
@@ -17,8 +18,19 @@ articles_data = {
     'habit': {'name': 'Review of Some Habit Tracking Apps', 'reading_time': '7 mins'},
 }
 
+authors_data = {
+    'medova': {'first_name': 'Diana', 'last_name': 'Medova'},
+    'winter': {'first_name': 'Zhanna', 'last_name': 'Winter'},
+}
+
 for slug, article in articles_data.items():
     new_article = Article(slug=slug, title=article['name'], reading_time = article['reading_time'])
     db.session.add(new_article)
+
+db.session.commit()
+
+for slug, author in authors_data.items():
+    new_author = Author(first_name=author['first_name'], last_name = author['last_name'])
+    db.session.add(new_author)
 
 db.session.commit()

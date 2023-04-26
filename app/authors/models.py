@@ -3,5 +3,5 @@ from datetime import datetime
 
 class Author(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
-    date_registered = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    articles = db.relationship('Article', backref='author', lazy=True)
+    first_name = db.Column(db.String(80))
+    last_name = db.Column(db.String(80))
