@@ -59,3 +59,11 @@ def edit_article_by_user(id):
         article.save()
         return redirect(url_for("articles.list_of_articles"))
     return render_template("articles/edit.html", article=article)
+
+@blueprint.route('/run-seed')
+def run_seed():
+    if not Article.query.filter_by(slug='moscow').first():
+        import app.scripts.seed
+        return 'Database seed completed!'
+    else:
+        return 'Nothing to run.'
