@@ -3,9 +3,13 @@
 {% block title %}Starting page{% endblock %}
 
 {% block main %}
-    <h1>Hey there!</h1>
-
-    <h2>Welcome to my article blog!</h2>
+    <div class="image_with_text">
+        <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt = "Two Brown Pencils on White Surface">
+        <div class="centered_text">
+            <h1>Hey there!</h1>
+            <h2>Welcome to my article blog!</h2>
+        </div>
+    </div>
     <div class="container">
         <div class="item">
             <p class="entry_columns">Here are <a href="/articles/">all blog articles</a></p>

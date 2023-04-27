@@ -1,5 +1,5 @@
 nav {
-  background-color: darkblue;
+  background-color: rgb(142, 183, 75);
 }
 
 nav ul {
@@ -22,15 +22,25 @@ nav li a {
 }
 
 nav li a:hover {
-  background-color: blue;
+  background-color: rgb(94, 152, 2);
 }
 
-h1 {
+.image_with_text {
+  position: relative;
   text-align: center;
 }
 
-h2 {
-  text-align: center;
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.centered_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: cursive;
 }
 
 .container {
@@ -51,3 +61,4 @@ h2 {
   text-align: center;
   font-size: large;
 }
+
