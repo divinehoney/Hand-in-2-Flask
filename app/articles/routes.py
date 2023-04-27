@@ -49,3 +49,9 @@ def delete_article_by_user():
 
 
     return render_template('articles/delete.html', html_articles = all_articles)
+
+@blueprint.route('/editarticle', methods=["POST", "GET"])
+def edit_article_by_user():
+    all_articles = Article.query.all()
+    
+

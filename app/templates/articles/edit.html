@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Article Editing Page {% endblock %}
+
+{% block main %}
+<h1> Edit an Article</h1>
+
+<form method="POST">
+    <h2>Choose an article to edit</h2>
+    <fieldset>
+        <div>
+            <label for="articles">Articles:</label>
+            <select id="articles" name="articles">
+                {% for article in html_articles %}
+                <option value="{{ article.title }}">{{ article.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% if error %}
+        <p style="color: tomato;">{{ error }}</p>
+        {% endif %}
+        <input type="submit" value="Edit Article">
+    </fieldset>
+  </form>
+
+  {% endblock %}
