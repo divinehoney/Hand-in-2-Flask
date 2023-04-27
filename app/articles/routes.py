@@ -25,8 +25,7 @@ def post_publish_an_article():
     try:
         if not all([
             request.form.get('title'),
-            request.form.get('reading_time'),
-            request.form.get('content')
+            request.form.get('reading_time')
         ]):
             raise Exception('Please fill out all article fields.')
     
