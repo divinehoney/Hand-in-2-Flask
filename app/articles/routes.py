@@ -9,7 +9,7 @@ blueprint = Blueprint('articles', __name__)
 def list_of_articles():
     page_number = request.args.get('page', 1, type=int)
     articles_pagination = Article.query.paginate(page=page_number, per_page=current_app.config['ARTICLES_PER_PAGE'])
-    return render_template('articles/index.html', html_articles=articles_pagination)
+    return render_template('articles/list_of_articles.html', html_articles=articles_pagination)
 
 @blueprint.route('/articles/<id>')
 def single_article(id):
@@ -45,7 +45,6 @@ def delete_article_by_user():
     if request.method == "POST":
         delete_article(request.form)
         return render_template('articles/confirmation.html', action = 'deleted')
-
 
     return render_template('articles/delete.html', html_articles = all_articles)
 
