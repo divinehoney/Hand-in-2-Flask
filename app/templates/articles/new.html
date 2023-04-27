@@ -11,6 +11,7 @@
         <div>
             <label for="title">Article title:</label>
             <input type="text" id="title" name="title" placeholder="Where people drink beer for breakfast" size="80">
+            <p>Character Count: <span id="counter">0</span></p>
         </div>
         <div>
             <label for="reading_time">Reading time:</label>
@@ -22,5 +23,15 @@
         <input type="submit" value="Post Article">
     </fieldset>
   </form>
+
+  <script>
+    const input_field = document.getElementById("title");
+    input_field.addEventListener('keyup', function() {
+        const current_value = input_field.value;
+        const character_count = current_value.length;
+        const counter = document.getElementById("counter");
+        counter.innerText = character_count;
+    })
+  </script>
 
   {% endblock %}
