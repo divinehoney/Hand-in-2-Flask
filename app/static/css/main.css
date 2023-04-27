@@ -60,5 +60,20 @@ img {
   color: black;
   text-align: center;
   font-size: large;
+  text-decoration: none;
 }
 
+.link {
+  padding: 20px;
+}
+
+.link a {
+  padding: 10px;
+  background-color: lightblue;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
