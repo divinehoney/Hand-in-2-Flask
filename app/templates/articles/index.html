@@ -7,7 +7,7 @@
   <ul>
     {% for article in html_articles.items %}
       <li>
-        <a href="/articles/{{ article.slug }}">{{ article.title }}</a>
+        <a href="/articles/{{ article.id }}">{{ article.title }}</a>
         </li>
         <p> Reading time: {{ article.reading_time }} </p>
     {% endfor %}

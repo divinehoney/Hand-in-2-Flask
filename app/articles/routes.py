@@ -11,10 +11,10 @@ def list_of_articles():
     articles_pagination = Article.query.paginate(page=page_number, per_page=current_app.config['ARTICLES_PER_PAGE'])
     return render_template('articles/index.html', html_articles=articles_pagination)
 
-@blueprint.route('/articles/<slug>')
-def single_article(slug):
-    single_db_article = Article.query.filter_by(slug=slug).first_or_404()
-    return render_template('articles/show.html', single_html_article = single_db_article)
+@blueprint.route('/articles/<id>')
+def single_article(id):
+    single_db_article = Article.query.filter_by(id=id).first_or_404()
+    return render_template('articles/show.html', single_html_article=single_db_article)
 
 @blueprint.get('/publisharticle')
 def get_publish_an_article():
@@ -50,8 +50,12 @@ def delete_article_by_user():
 
     return render_template('articles/delete.html', html_articles = all_articles)
 
-@blueprint.route('/editarticle', methods=["POST", "GET"])
-def edit_article_by_user():
-    all_articles = Article.query.all()
-    
-
+@blueprint.route('/editarticle/<id>', methods=["POST", "GET"])
+def edit_article_by_user(id):
+    article = Article.query.filter_by(id=id).first()
+    if request.method == "POST":
+        article.title = request.form.get('title')
+        article.reading_time = request.form.get('reading_time')
+        article.save()
+        return redirect(url_for("articles.list_of_articles"))
+    return render_template("articles/edit.html", article=article)

@@ -9,12 +9,12 @@
     <h2>Choose an article to edit</h2>
     <fieldset>
         <div>
-            <label for="articles">Articles:</label>
-            <select id="articles" name="articles">
-                {% for article in html_articles %}
-                <option value="{{ article.title }}">{{ article.title }}</option>
-                {% endfor %}
-            </select>
+            <label for="title">Article title:</label>
+            <input type="text" id="title" name="title" value="{{article.title}}" size="80">
+        </div>
+        <div>
+            <label for="reading_time">Reading time:</label>
+            <input type="text" id="reading_time" name="reading_time" value="{{article.reading_time}}" size="80">
         </div>
         {% if error %}
         <p style="color: tomato;">{{ error }}</p>
