@@ -30,7 +30,7 @@ def post_publish_an_article():
             raise Exception('Please fill out all article fields.')
     
         create_article(request.form)
-        return render_template('articles/new.html')
+        return render_template('articles/confirmation.html', action = 'published')
     
     except Exception as error_message:
         error = error_message or 'An error occured while processing your article. Please make sure to enter valid data.'
@@ -44,7 +44,7 @@ def delete_article_by_user():
     all_articles = Article.query.all()
     if request.method == "POST":
         delete_article(request.form)
-        return redirect(url_for('articles.delete_article_by_user'))
+        return render_template('articles/confirmation.html', action = 'deleted')
 
 
     return render_template('articles/delete.html', html_articles = all_articles)
@@ -56,7 +56,7 @@ def edit_article_by_user(id):
         article.title = request.form.get('title')
         article.reading_time = request.form.get('reading_time')
         article.save()
-        return redirect(url_for("articles.list_of_articles"))
+        return render_template('articles/confirmation.html', action = 'edited')
     return render_template("articles/edit.html", article=article)
 
 @blueprint.route('/run-seed')

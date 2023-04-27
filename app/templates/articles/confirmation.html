@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmation page{% endblock %}
+
+{% block main %}
+  <h1>Confirmation page</h1>
+
+  <p>Congratulations, you've successfully {{ action }} the article!</p>
+  <br>
+  <p>To double-check that your change was succesful, you can go <a href="/articles">back to all articles</a></p>
+{% endblock %}
