@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, send_file
-from . import articles, simple_pages, authors
+from . import articles, simple_pages, authors, users
 from app.extensions.database import db, migrate
 
 def create_app():
@@ -16,6 +16,7 @@ def register_blueprints(app: Flask):
     app.register_blueprint(articles.routes.blueprint)
     app.register_blueprint(simple_pages.routes.blueprint)
     app.register_blueprint(authors.routes.blueprint)
+    app.register_blueprint(users.routes.blueprint)
 
 def register_extensions(app: Flask):
     db.init_app(app)
