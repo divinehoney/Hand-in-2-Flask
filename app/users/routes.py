@@ -19,8 +19,8 @@ def post_register():
         user = User(
             email = request.form.get('email'),
             password=generate_password_hash(request.form.get('password'))
-        user.save()
         )
+        user.save()
 
         return redirect(url_for('articles.articles'))
     except Exception as error_message:
