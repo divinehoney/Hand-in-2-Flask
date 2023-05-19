@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from app.users.models import User
 
 blueprint = Blueprint('users', __name__)
@@ -9,6 +9,10 @@ def get_register():
 
 @blueprint.post('/register')
 def post_register():
+    if request.form.get('password') != request.form.get('password_confirmation'):
+        return render_template('users/register.html', error = 'The password confirmation must match the password.')
+    elif User.query.filter_by(email=request.form.get('email')).first():
+        return render_template('users/register.html', error='The email address is already registered.')
     return 'User created'
 
 @blueprint.get('/login')
