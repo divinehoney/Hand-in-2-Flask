@@ -33,7 +33,18 @@ def get_login():
 
 @blueprint.post('/login')
 def post_login():
-    return 'User logged in'
+    try:
+        user = User.query.filter_by(email=request.form.get('email')).first()
+
+        if not user:
+            raise Exception('No user with the given email address was found.')
+        elif not check_password_hash(user.password, request.form.get('password')):
+            raise Exception('The password does not appear to be correct.')
+        
+        return redirect(url_for('articles.list_of_articles'))
+    except Exception as error_message:
+        error = error_message or 'An error occurred while logged in. Please verify your email and password.'
+        return render_template('users/login.html', error=error)
 
 @blueprint.get('/logout')
 def logout():
