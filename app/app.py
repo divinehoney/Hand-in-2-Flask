@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, send_file
 from . import articles, simple_pages, authors, users
 from app.extensions.database import db, migrate
+from app.extensions.authentication import login_manager
 
 def create_app():
     app = Flask(__name__)
@@ -25,3 +26,4 @@ def register_extensions(app: Flask):
     #the first parameter app tells where to look for the models that are imported in our app
     #the second parameter db tells the script where to find the database that should be dated with the new database tables
     #compare_type is a configuration option; it will enable any changes we make to column types in our models and allow us to create migrations for it
+    login_manager.init_app(app)
