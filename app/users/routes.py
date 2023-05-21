@@ -16,6 +16,8 @@ def post_register():
             raise Exception('The password confirmation must match the password.')
         elif User.query.filter_by(email=request.form.get('email')).first():
             raise Exception('The email address is already registered.')
+        elif len(request.form.get('password')) < 8:
+            raise Exception('Your password should include at least 8 characters.')
     
         user = User(
             email = request.form.get('email'),
