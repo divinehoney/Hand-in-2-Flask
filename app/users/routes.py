@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from app.users.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 blueprint = Blueprint('users', __name__)
 
@@ -51,6 +51,7 @@ def post_login():
 
 @blueprint.get('/logout')
 def logout():
-    return 'User logged out'
+    logout_user()
+    return redirect(url_for('users.get_login'))
 
 
