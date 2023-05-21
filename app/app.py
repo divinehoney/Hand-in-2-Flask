@@ -4,7 +4,7 @@ from app.extensions.database import db, migrate
 from app.extensions.authentication import login_manager
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__) #creating an instance of the class Flask
     app.config.from_object('app.config')
     
     register_extensions(app)
