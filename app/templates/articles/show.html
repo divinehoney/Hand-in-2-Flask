@@ -6,6 +6,10 @@
   <h1>{{single_html_article.title}}</h1>
 
   <p>Reading time: {{single_html_article.reading_time}}</p>
+
+  <p>In order to edit or delete any article, you first have to <a href="{{ url_for('users.get_register') }}">register</a> or <a href="{{ url_for('users.get_login') }}">log in</a>.
+  </p>
+  <p>If you are logged in already, you may click the buttons below</p>
   <div class="link">
     <a href="/editarticle/{{ single_html_article.id }}">Edit this article</a>
     <a href="/deletearticle">Delete an article</a>
