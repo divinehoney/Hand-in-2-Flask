@@ -12,8 +12,8 @@
   <body>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-me/">About</a></li>
+        <li><a href="{{ url_for('simple_pages.index') }}">Home</a></li>
+        <li><a href="{{ url_for('simple_pages.about_me') }}">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>

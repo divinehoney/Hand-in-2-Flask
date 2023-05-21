@@ -12,10 +12,10 @@
   <p>If you are logged in already, you may click the buttons below</p>
   <div class="link">
     <a href="/editarticle/{{ single_html_article.id }}">Edit this article</a>
-    <a href="/deletearticle">Delete an article</a>
+    <a href="{{ url_for('articles.delete_article_by_user') }}">Delete an article</a>
   </div>
 
   <p>
-    <a href="/articles">Back to all articles</a>
+    <a href="{{ url_for('articles.list_of_articles') }}">Back to all articles</a>
   </p>
 {% endblock %}
