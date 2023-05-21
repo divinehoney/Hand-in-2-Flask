@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, current_app, redirect, ur
 from .models import Article
 from .services.create_article import create_article
 from .services.delete_article import delete_article
+from flask_login import login_required
 
 blueprint = Blueprint('articles', __name__)
 
@@ -17,10 +18,12 @@ def single_article(id):
     return render_template('articles/show.html', single_html_article=single_db_article)
 
 @blueprint.get('/publisharticle')
+@login_required
 def get_publish_an_article():
     return render_template('articles/new.html')
 
 @blueprint.post('/publisharticle')
+@login_required
 def post_publish_an_article():
     try:
         if not all([
@@ -40,6 +43,7 @@ def post_publish_an_article():
         return render_template('articles/new.html', error = error)
     
 @blueprint.route('/deletearticle', methods=["POST", "GET"])
+@login_required
 def delete_article_by_user():
     all_articles = Article.query.all()
     if request.method == "POST":
@@ -49,6 +53,7 @@ def delete_article_by_user():
     return render_template('articles/delete.html', html_articles = all_articles)
 
 @blueprint.route('/editarticle/<id>', methods=["POST", "GET"])
+@login_required
 def edit_article_by_user(id):
     article = Article.query.filter_by(id=id).first()
     if request.method == "POST":
@@ -59,6 +64,7 @@ def edit_article_by_user(id):
     return render_template("articles/edit.html", article=article)
 
 @blueprint.route('/run-seed')
+@login_required
 def run_seed():
     if not Article.query.filter_by(slug='moscow').first():
         import app.scripts.seed

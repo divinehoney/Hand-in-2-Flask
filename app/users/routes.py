@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from app.users.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user
 
 blueprint = Blueprint('users', __name__)
 
@@ -22,7 +23,8 @@ def post_register():
         )
         user.save()
 
-        return redirect(url_for('articles.articles'))
+        login_user(user)
+        return redirect(url_for('articles.list_of_articles'))
     except Exception as error_message:
         error = error_message or 'An error occured while creating a user. Please make sure to enter valid data.'
         return render_template('users/register.html', error=error)
@@ -41,6 +43,7 @@ def post_login():
         elif not check_password_hash(user.password, request.form.get('password')):
             raise Exception('The password does not appear to be correct.')
         
+        login_user(user)
         return redirect(url_for('articles.list_of_articles'))
     except Exception as error_message:
         error = error_message or 'An error occurred while logged in. Please verify your email and password.'
