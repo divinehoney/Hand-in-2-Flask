@@ -21,5 +21,5 @@
         <input type="submit" value="Edit Article">
     </fieldset>
   </form>
-  <p>Have you picked the wrong article to edit? <a href="/articles">Here you can go back to the list of all articles</a></p>
+  <p>Have you picked the wrong article to edit? <a href="{{ url_for('articles.list_of_articles') }}">Here you can go back to the list of all articles</a></p>
   {% endblock %}

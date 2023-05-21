@@ -7,5 +7,5 @@
 
   <p>Congratulations, you've successfully {{ action }} the article!</p>
   <br>
-  <p>To double-check that your change was succesful, you can go <a href="/articles">back to all articles</a></p>
+  <p>To double-check that your change was succesful, you can go <a href="{{ url_for('articles.list_of_articles') }}">back to all articles</a></p>
 {% endblock %}
