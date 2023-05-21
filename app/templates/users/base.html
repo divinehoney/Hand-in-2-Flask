@@ -12,8 +12,8 @@
   <body>
     <nav>
       <ul class="container">
-        <li class="item"><a href="/">Home</a></li>
-        <li class="item"><a href="/about-me/">About</a></li>
+        <li class="item"><a href="{{ url_for('simple_pages.index') }}">Home</a></li>
+        <li class="item"><a href="{{ url_for('simple_pages.about_me') }}">About</a></li>
         <li class="item"><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
